@@ -1,5 +1,6 @@
 const { name } = require('ejs');
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
 
 
@@ -8,7 +9,7 @@ const { MongoClient } = require('mongodb');
 const scraperObject = {
 	url: 'https://www.espn.com/nfl/players',
 	async scraper(browser) {
-    const mongoURL = 'mongodb+srv://gmfreundlich:Maggie01Yes!@snippetsapp.iw0ui4i.mongodb.net/?retryWrites=true&w=majority'; // Replace with your MongoDB server URL
+    const mongoURL = process.env.MONGO_URL
     const dbName = 'NFL_players_scraped_data'; // Replace with your preferred database name
     const client = new MongoClient(mongoURL, { useUnifiedTopology: true });
 		let data = [];
